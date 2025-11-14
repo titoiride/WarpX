@@ -223,6 +223,9 @@ MultiParticleContainer::Restart (const std::string& dir)
         pc->Restart(dir, species_names.at(i));
     }
     for (unsigned i = species_names.size(); i < species_names.size()+lasers_names.size(); ++i) {
+        amrex::Print()<< Utils::TextMsg::Info(
+            "Now loading " + species_names[i]
+        );
         allcontainers.at(i)->Restart(dir, lasers_names.at(i-species_names.size()));
     }
 }
